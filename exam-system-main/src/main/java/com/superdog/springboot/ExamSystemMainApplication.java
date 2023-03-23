@@ -12,8 +12,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableCaching
 @EnableScheduling
 @MapperScan({"com.superdog.springboot","com.lczyfz"})
-@SpringBootApplication(exclude = {SecurityAutoConfiguration.class,
-        org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration.class,
+@SpringBootApplication(exclude = {SecurityAutoConfiguration.class, org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration.class,
         SecurityAutoConfiguration.class}, scanBasePackages = {"com.lczyfz.*","com.superdog.springboot.*"})
 public class ExamSystemMainApplication {
     public static void main(String[] args) {

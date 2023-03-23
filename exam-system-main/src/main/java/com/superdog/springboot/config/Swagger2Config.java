@@ -59,7 +59,7 @@ public class Swagger2Config {
         return new ApiInfoBuilder()
                 .title("exam-system")
                 .description("Springboot基础开发工程swagger-api文档")
-                .termsOfServiceUrl("")
+                .termsOfServiceUrl("https://github.com/SUPERGOG07/exam-system")
                 .version("1.0")
                 .contact(new Contact("Maple", "https://github.com/SkyDDDog/demo", "362664609@qq.com"))
                 .build();

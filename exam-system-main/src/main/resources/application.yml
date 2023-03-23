@@ -30,7 +30,7 @@ spring:
   datasource:
     druid:
       driver-class-name: com.mysql.jdbc.Driver
-      url: jdbc:mysql://localhost:3306/exam-system?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false
+      url: jdbc:mysql://localhost:3306/edp_base?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false
       username: mysql_ljh
       password: 123456
 
@@ -97,10 +97,9 @@ spring:
     host: smtp.qq.com
     port: 465
 
+    username: test
 
-    username: superdog07@foxmail.com
-
-    password: bmoybzjdiwozifeg
+    password: test
 
     default-encoding: UTF-8
     properties:
