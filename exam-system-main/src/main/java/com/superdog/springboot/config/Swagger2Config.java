@@ -50,7 +50,7 @@ public class Swagger2Config {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.lczyfz"))//扫描的包路径
+                .apis(scanBasePackage("com.lczyfz;com.superdog.springboot"))//扫描的包路径
                 .paths(PathSelectors.any())
                 .build();
     }
@@ -61,7 +61,7 @@ public class Swagger2Config {
                 .description("Springboot基础开发工程swagger-api文档")
                 .termsOfServiceUrl("https://github.com/SUPERGOG07/exam-system")
                 .version("1.0")
-                .contact(new Contact("Maple", "https://github.com/SkyDDDog/demo", "362664609@qq.com"))
+                .contact(new Contact("Maple", "https://github.com/SUPERGOG07/exam-system", "1436216510@qq.com"))
                 .build();
     }
 }

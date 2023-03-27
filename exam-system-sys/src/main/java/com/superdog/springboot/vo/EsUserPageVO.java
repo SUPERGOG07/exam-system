@@ -1,26 +1,22 @@
 package com.superdog.springboot.vo;
 
 import com.lczyfz.edp.springboot.core.vo.PageVO;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-import javax.validation.constraints.NotBlank;
-
+@ApiModel(value = "EsUserPageVO", description = "EsUserPageVO")
 public class EsUserPageVO extends PageVO {
 
-    @ApiModelProperty(value = "用户名")
-    @NotBlank(message = "用户名不能为空")
+    @ApiModelProperty(value = "用户名",example = "")
     private String username;
 
-    @ApiModelProperty(value = "密码")
-    @NotBlank(message = "密码不能为空")
+    @ApiModelProperty(value = "密码",example = "")
     private String password;
 
-    @ApiModelProperty(value = "角色")
-    @NotBlank(message = "角色不能为空")
+    @ApiModelProperty(value = "角色",example = "")
     private String role;
 
-    @ApiModelProperty(value = "邮箱")
-    @NotBlank(message = "邮箱不能为空")
+    @ApiModelProperty(value = "邮箱",example = "")
     private String email;
 
     public String getUsername() {

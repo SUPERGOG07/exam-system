@@ -1,22 +1,19 @@
 package com.superdog.springboot.vo;
 
 import com.lczyfz.edp.springboot.core.vo.PageVO;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-import javax.validation.constraints.NotBlank;
-
+@ApiModel(value = "EsElementPageVO", description = "EsElementPageVO")
 public class EsElementPageVO extends PageVO {
 
-    @ApiModelProperty(value = "出题人")
-    @NotBlank(message = "出题人不能为空")
+    @ApiModelProperty(value = "出题人",example = "")
     private String owner;
 
-    @ApiModelProperty(value = "问题")
-    @NotBlank(message = "问题不能为空")
+    @ApiModelProperty(value = "问题",example = "")
     private String question;
 
-    @ApiModelProperty(value = "答案")
-    @NotBlank(message = "答案不能为空")
+    @ApiModelProperty(value = "答案",example = "")
     private String answer;
 
     public String getOwner() {

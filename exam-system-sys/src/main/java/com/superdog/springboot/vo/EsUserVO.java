@@ -1,26 +1,27 @@
 package com.superdog.springboot.vo;
 
 import com.lczyfz.edp.springboot.core.entity.BaseVO;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.NotBlank;
 
+@ApiModel(value = "EsUserVO", description = "EsUserVO")
 public class EsUserVO extends BaseVO {
 
-    @ApiModelProperty(value = "用户名")
+    @ApiModelProperty(value = "用户名",example = "test")
     @NotBlank(message = "用户名不能为空")
     private String username;
 
-    @ApiModelProperty(value = "密码")
+    @ApiModelProperty(value = "密码",example = "123456")
     @NotBlank(message = "密码不能为空")
     private String password;
 
-    @ApiModelProperty(value = "角色")
+    @ApiModelProperty(value = "角色",example = "teacher")
     @NotBlank(message = "角色不能为空")
     private String role;
 
-    @ApiModelProperty(value = "邮箱")
-    @NotBlank(message = "邮箱不能为空")
+    @ApiModelProperty(value = "邮箱",example = "test@example.com")
     private String email;
 
     public String getUsername() {

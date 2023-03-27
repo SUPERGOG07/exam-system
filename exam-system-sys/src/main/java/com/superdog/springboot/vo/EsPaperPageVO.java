@@ -1,27 +1,24 @@
 package com.superdog.springboot.vo;
 
 import com.lczyfz.edp.springboot.core.vo.PageVO;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-import javax.validation.constraints.NotBlank;
 import java.util.Date;
 
+@ApiModel(value = "EsPaperPageVO", description = "EsPaperPageVO")
 public class EsPaperPageVO extends PageVO {
 
-    @ApiModelProperty(value = "出卷人")
-    @NotBlank(message = "出卷人不能为空")
+    @ApiModelProperty(value = "出卷人",example = "")
     private String owner;
 
-    @ApiModelProperty(value = "允许开始时间")
-    @NotBlank(message = "允许开始时间不能为空")
+    @ApiModelProperty(value = "允许开始时间",example = "")
     private Date startTime;
 
-    @ApiModelProperty(value = "强制结束时间")
-    @NotBlank(message = "强制结束时间不能为空")
+    @ApiModelProperty(value = "强制结束时间",example = "")
     private Date endTime;
 
-    @ApiModelProperty(value = "试卷题目数量")
-    @NotBlank(message = "试卷题目数量不能为空")
+    @ApiModelProperty(value = "试卷题目数量",example = "")
     private Integer count;
 
     public String getOwner() {
