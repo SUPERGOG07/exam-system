@@ -8,6 +8,10 @@ import javax.validation.constraints.NotBlank;
 
 ;
 
+/**
+ * @author superdog
+ * @version 2023-3-27
+ */
 @ApiModel(value = "EsPaperElement", description = "EsPaperElement")
 public class EsPaperElement extends DataEntity<EsPaperElement> {
 

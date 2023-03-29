@@ -1,10 +1,12 @@
 package com.superdog.springboot.vo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.lczyfz.edp.springboot.core.entity.BaseVO;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @ApiModel(value = "EsPaperVO", description = "EsPaperVO")
@@ -14,12 +16,20 @@ public class EsPaperVO extends BaseVO {
     @NotBlank(message = "出卷人不能为空")
     private String owner;
 
-    @ApiModelProperty(value = "允许开始时间",example = "2023-01-01 00:00:00")
-    @NotBlank(message = "允许开始时间不能为空")
+    @ApiModelProperty(value = "允许开始时间", example = "2023-01-01 00:00:00")
+    @NotNull(message = "允许开始时间不能为空")
+    @JsonFormat(
+            pattern = "yyyy-MM-dd HH:mm:ss",
+            timezone = "GMT+8"
+    )
     private Date startTime;
 
-    @ApiModelProperty(value = "强制结束时间",example = "2023-01-01 01:00:00")
-    @NotBlank(message = "强制结束时间不能为空")
+    @ApiModelProperty(value = "强制结束时间", example = "2023-01-01 01:00:00")
+    @NotNull(message = "强制结束时间不能为空")
+    @JsonFormat(
+            pattern = "yyyy-MM-dd HH:mm:ss",
+            timezone = "GMT+8"
+    )
     private Date endTime;
 
     @ApiModelProperty(value = "试卷题目数量",example = "0")

@@ -7,13 +7,16 @@ import com.superdog.springboot.entity.EsUser;
 import com.superdog.springboot.entity.example.EsUserExample;
 import com.superdog.springboot.mapper.EsUserMapper;
 import com.superdog.springboot.util.EncodeUtils;
-import com.superdog.springboot.util.RoleUtils;
 import com.superdog.springboot.vo.EsUserPageVO;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+/**
+ * @author superdog
+ * @version 2023-3-27
+ */
 @Service
 @Transactional(readOnly = true)
 public class EsUserService extends CrudService<EsUserMapper, EsUser, EsUserExample> {
@@ -32,6 +35,9 @@ public class EsUserService extends CrudService<EsUserMapper, EsUser, EsUserExamp
 
         if (StringUtils.isNotBlank(esUserPageVO.getOrderBy())) {
             esUserExample.setOrderByClause(esUserPageVO.getOrderBy());
+        }
+        if (StringUtils.isNotBlank(esUserPageVO.getRole())) {
+            esUserExample.getOredCriteria().get(0).andRoleEqualTo(esUserPageVO.getRole());
         }
 
         page.setCount(mapper.countByExample(esUserExample));
@@ -59,14 +65,23 @@ public class EsUserService extends CrudService<EsUserMapper, EsUser, EsUserExamp
 
     /**
      * id存在性检测
+     *
      * @param id
      * @return
      */
-    public boolean idNotExist(String id){
+    public boolean idNotExist(String id) {
         return mapper.selectByPrimaryKey(id) == null;
     }
 
     public boolean checkTeacher(String username, String password) {
+        return checkRole(username, password, EsUser.TEACHER);
+    }
+
+    public boolean checkStudent(String username, String password) {
+        return checkRole(username, password, EsUser.STUDENT);
+    }
+
+    private boolean checkRole(String username, String password, String role) {
         if (StringUtils.isBlank(username) || StringUtils.isBlank(password)) {
             return false;
         }
@@ -86,7 +101,6 @@ public class EsUserService extends CrudService<EsUserMapper, EsUser, EsUserExamp
             return false;
         }
 
-        return StringUtils.isNotBlank(esUser.getRole()) && StringUtils.equals(esUser.getRole(), RoleUtils.TEACHER);
-
+        return StringUtils.isNotBlank(esUser.getRole()) && StringUtils.equals(esUser.getRole(), role);
     }
 }

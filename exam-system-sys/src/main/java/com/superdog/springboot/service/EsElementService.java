@@ -10,6 +10,10 @@ import com.superdog.springboot.vo.EsElementPageVO;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+/**
+ * @author superdog
+ * @version 2023-3-27
+ */
 @Service
 @Transactional(readOnly = true)
 public class EsElementService extends CrudService<EsElementMapper, EsElement, EsElementExample> {
@@ -19,7 +23,7 @@ public class EsElementService extends CrudService<EsElementMapper, EsElement, Es
 
         EsElementExample esElementExample = new EsElementExample();
         esElementExample.createCriteria().andDelFlagEqualTo(EsElement.DEL_FLAG_NORMAL);
-//        出题者
+//        是否限定出题者
         if(StringUtils.isNotBlank(esElementPageVO.getOwner())){
             esElementExample.getOredCriteria().get(0).andOwnerEqualTo(esElementPageVO.getOwner());
         }

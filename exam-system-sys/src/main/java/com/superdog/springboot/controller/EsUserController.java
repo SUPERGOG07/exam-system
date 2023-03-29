@@ -10,7 +10,6 @@ import com.lczyfz.edp.springboot.core.validation.Create;
 import com.lczyfz.edp.springboot.core.validation.Update;
 import com.superdog.springboot.entity.EsUser;
 import com.superdog.springboot.service.EsUserService;
-import com.superdog.springboot.util.RoleUtils;
 import com.superdog.springboot.vo.EsUserPageVO;
 import com.superdog.springboot.vo.EsUserVO;
 import io.swagger.annotations.Api;
@@ -62,7 +61,7 @@ public class EsUserController extends BaseController {
         EsUser esUser = new EsUser();
         BeanCustomUtils.copyProperties(esUserVO, esUser);
 //        角色字段校验
-        String[] roles = {RoleUtils.TEACHER,RoleUtils.STUDENT};
+        String[] roles = {EsUser.TEACHER, EsUser.STUDENT};
         if (StringUtils.isNotBlank(esUser.getRole())&&!StringUtils.containsAny(esUser.getRole(),roles)) {
             result.error(MsgCodeUtils.MSG_CODE_ILLEGAL_ARGUMENT);
             result.setErrMsg(result.getErrMsg()+"role字段只允许'teacher'和'student'两种字段");
@@ -185,7 +184,8 @@ public class EsUserController extends BaseController {
         EsUser esUser = esUserService.get(id);
         if(esUser==null){
             result.error(MsgCodeUtils.MSG_CODE_DATA_NOT_EXIST);
-            logger.info("update user|user null error: {}",id);
+            result.setErrMsg(result.getErrMsg() + "user");
+            logger.info("update user|user null error: {}", id);
             return (CommonResult) result.end();
         }
         BeanCustomUtils.copyProperties(esUserVO,esUser);
@@ -239,7 +239,8 @@ public class EsUserController extends BaseController {
         EsUser esUser = esUserService.get(id);
         if(esUser==null){
             result.error(MsgCodeUtils.MSG_CODE_DATA_NOT_EXIST);
-            logger.info("get user|user null error: {}",id);
+            result.setErrMsg(result.getErrMsg() + "user");
+            logger.info("get user|user null error: {}", id);
             return (CommonResult) result.end();
         }
 
@@ -265,8 +266,8 @@ public class EsUserController extends BaseController {
                     defaultValue = "2023-01-01 00:00:00")
     })
     @GetMapping("/list")
-    public PageResult<EsUser> list(@Validated @RequestBody EsUserPageVO esUserPageVO,BindingResult bindingResult){
-        logger.info("list user|param: {}",esUserPageVO);
+    public PageResult<EsUser> list(@Validated @RequestBody(required = false) EsUserPageVO esUserPageVO, BindingResult bindingResult) {
+        logger.info("list user|param: {}", esUserPageVO);
         PageResult<EsUser> result = new PageResult<EsUser>().init();
 //        参数校验
         if (bindingResult.hasErrors()) {

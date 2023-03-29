@@ -8,8 +8,16 @@ import javax.validation.constraints.NotBlank;
 
 ;
 
+/**
+ * @author superdog
+ * @version 2023-3-27
+ */
 @ApiModel(value = "EsUser", description = "EsUser")
 public class EsUser extends DataEntity<EsUser> {
+
+    public static final String TEACHER = "teacher";
+
+    public static final String STUDENT = "student";
 
     /**
      * 用户名

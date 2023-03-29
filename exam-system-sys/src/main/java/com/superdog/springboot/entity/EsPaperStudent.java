@@ -9,8 +9,16 @@ import java.util.Date;
 
 ;
 
+/**
+ * @author superdog
+ * @version 2023-3-27
+ */
 @ApiModel(value = "EsPaperStudent", description = "EsPaperStudent")
 public class EsPaperStudent extends DataEntity<EsPaperStudent> {
+
+    public static final String SUBMIT_YES = "1";
+
+    public static final String SUBMIT_NO = "0";
 
     /**
      * 试卷编号
@@ -53,7 +61,7 @@ public class EsPaperStudent extends DataEntity<EsPaperStudent> {
     private Date endTime;
 
     /**
-     * 提交标记
+     * 提交标记 1为已提交 0为未提交
      * 表字段 : es_paper_student.submit_flag
      *
      * @mbggenerated Sun Mar 26 22:52:59 CST 2023

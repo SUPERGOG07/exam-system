@@ -9,6 +9,10 @@ import java.util.Date;
 
 ;
 
+/**
+ * @author superdog
+ * @version 2023-3-27
+ */
 @ApiModel(value = "EsPaper", description = "EsPaper")
 public class EsPaper extends DataEntity<EsPaper> {
 

@@ -264,7 +264,6 @@ public class EsElementController extends BaseController {
         result.success("esElement", esElement);
         logger.info("update element|success: {}", id);
         return (CommonResult) result.end();
-
     }
 
     @ApiOperation(value = "获取单个试题", notes = "Request-DateTime样例：2023-01-01 00:00:00")
@@ -323,12 +322,12 @@ public class EsElementController extends BaseController {
             logger.info("get element|author error: {}", username);
             return (CommonResult) result.end();
         }
-        //        读操作
+//        读操作
         EsElement esElement = esElementService.get(id);
         if (esElement == null) {
             result.error(MsgCodeUtils.MSG_CODE_DATA_NOT_EXIST);
-            result.setErrMsg(result.getErrMsg()+"id");
-            logger.info("get element|user null error: {}", id);
+            result.setErrMsg(result.getErrMsg() + "id");
+            logger.info("get element|esElement null error: {}", id);
             return (CommonResult) result.end();
         }
 
